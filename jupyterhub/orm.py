@@ -172,6 +172,18 @@ class Proxy(Base):
             client=client,
         )
 
+        self.log.info("Adding user %s to proxy %s => %s",
+            user.name, '/flaskproxy/' + user.name, user.flask_server.host,
+        )
+        yield self.api_request('/flaskproxy/' + user.name,
+            method='POST',
+            body=dict(
+                target=user.flask_server.host,
+                user=user.name,
+            ),
+            client=client,
+        )
+
     @gen.coroutine
     def delete_user(self, user, client=None):
         """Remove a user's server to the proxy table."""
@@ -280,6 +292,8 @@ class User(Base):
     # should we allow multiple servers per user?
     _server_id = Column(Integer, ForeignKey('servers.id'))
     server = relationship(Server, primaryjoin=_server_id == Server.id)
+    _flask_server_id = Column(Integer, ForeignKey('servers.id'))
+    flask_server = relationship(Server, primaryjoin=_flask_server_id == Server.id)
     admin = Column(Boolean, default=False)
     last_activity = Column(DateTime, default=datetime.utcnow)
 
