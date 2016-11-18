@@ -139,13 +139,11 @@ page_template = """
 {% block header_buttons %}
 {{super()}}
 
-{% if user %}
-<a href='/flaskproxy/{{user.name}}'
+<a href='{{flask_proxy_url}}'
  class='btn btn-default btn-sm navbar-btn pull-right'
- style='margin-top: 5px; margin-right: 4px; margin-left: 2px;'
+ style='margin-right: 4px; margin-left: 2px;'
  target="_blank"
 >MPContribs</a>
-{% endif %}
 
 <a href='{{hub_control_panel_url}}'
  class='btn btn-default btn-sm navbar-btn pull-right'
@@ -284,6 +282,8 @@ class SingleUserNotebookApp(NotebookApp):
 
         env.globals['hub_control_panel_url'] = \
             self.hub_host + url_path_join(self.hub_prefix, 'home')
+        env.globals['flask_proxy_url'] = \
+            self.hub_host + url_path_join('/flaskproxy', self.user)
 
         # patch jinja env loading to modify page template
         def get_page(name):
