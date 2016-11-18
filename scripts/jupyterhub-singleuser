@@ -139,6 +139,14 @@ page_template = """
 {% block header_buttons %}
 {{super()}}
 
+{% if user %}
+<a href='/flaskproxy/{{user.name}}'
+ class='btn btn-default btn-sm navbar-btn pull-right'
+ style='margin-top: 5px; margin-right: 4px; margin-left: 2px;'
+ target="_blank"
+>MPContribs</a>
+{% endif %}
+
 <a href='{{hub_control_panel_url}}'
  class='btn btn-default btn-sm navbar-btn pull-right'
  style='margin-right: 4px; margin-left: 2px;'
