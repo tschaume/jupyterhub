@@ -184,6 +184,18 @@ class Proxy(Base):
             client=client,
         )
 
+        self.log.info("Adding user %s to proxy %s => %s",
+            user.name, '/fwproxy/' + user.name, user.fw_server.host,
+        )
+        yield self.api_request('/fwproxy/' + user.name,
+            method='POST',
+            body=dict(
+                target=user.fw_server.host,
+                user=user.name,
+            ),
+            client=client,
+        )
+
     @gen.coroutine
     def delete_user(self, user, client=None):
         """Remove a user's server to the proxy table."""
@@ -294,6 +306,8 @@ class User(Base):
     server = relationship(Server, primaryjoin=_server_id == Server.id)
     _flask_server_id = Column(Integer, ForeignKey('servers.id'))
     flask_server = relationship(Server, primaryjoin=_flask_server_id == Server.id)
+    _fw_server_id = Column(Integer, ForeignKey('servers.id'))
+    fw_server = relationship(Server, primaryjoin=_fw_server_id == Server.id)
     admin = Column(Boolean, default=False)
     last_activity = Column(DateTime, default=datetime.utcnow)
 

@@ -139,11 +139,23 @@ page_template = """
 {% block header_buttons %}
 {{super()}}
 
-<a href='{{flask_proxy_url}}'
+<a href='{{fw_proxy_url}}'
  class='btn btn-default btn-sm navbar-btn pull-right'
  style='margin-right: 4px; margin-left: 2px;'
- target="_blank"
->MPContribs</a>
+>
+FW Dashboard</a>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    MPContribs <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="{{flask_proxy_url}}/ingester">Ingester</a></li>
+    <li><a href="{{flask_proxy_url}}/test_site">Test Site</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="https://materialsproject.org/mpcontribs">Materials Project</a></li>
+  </ul>
+</div>
 
 <a href='{{hub_control_panel_url}}'
  class='btn btn-default btn-sm navbar-btn pull-right'
@@ -284,6 +296,8 @@ class SingleUserNotebookApp(NotebookApp):
             self.hub_host + url_path_join(self.hub_prefix, 'home')
         env.globals['flask_proxy_url'] = \
             self.hub_host + url_path_join('/flaskproxy', self.user)
+        env.globals['fw_proxy_url'] = \
+            self.hub_host + url_path_join('/fwproxy', self.user)
 
         # patch jinja env loading to modify page template
         def get_page(name):
