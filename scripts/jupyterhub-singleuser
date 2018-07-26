@@ -140,20 +140,20 @@ page_template = """
 {{super()}}
 
 <a href='{{fw_proxy_url}}'
- class='btn btn-default btn-sm navbar-btn pull-right'
+ class='btn btn-info btn-sm navbar-btn pull-right'
  style='margin-right: 4px; margin-left: 2px;'
 >
 FW Dashboard</a>
 
 <div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="btn btn-info btn-sm navbar-btn dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     MPContribs <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><a href="{{flask_proxy_url}}/ingester">Ingester</a></li>
-    <li><a href="{{flask_proxy_url}}/test_site">Test Site</a></li>
+    <li><a href="{{flask_proxy_url}}/ingester" target=”_blank”>Ingester</a></li>
+    <li><a href="{{flask_proxy_url}}/test_site" target=”_blank”>Test Site</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="https://materialsproject.org/mpcontribs">Materials Project</a></li>
+    <li><a href="https://materialsproject.org/mpcontribs" target=”_blank”>Materials Project</a></li>
   </ul>
 </div>
 
