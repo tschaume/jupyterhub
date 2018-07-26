@@ -145,11 +145,11 @@ page_template = """
 >
 FW Dashboard</a>
 
-<div class="btn-group">
-  <button type="button" class="btn btn-info btn-sm navbar-btn dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="btn-group pull-right">
+  <button type="button" class="btn btn-info btn-sm navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     MPContribs <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu pull-right">
     <li><a href="{{flask_proxy_url}}/ingester" target=”_blank”>Ingester</a></li>
     <li><a href="{{flask_proxy_url}}/test_site" target=”_blank”>Test Site</a></li>
     <li role="separator" class="divider"></li>
