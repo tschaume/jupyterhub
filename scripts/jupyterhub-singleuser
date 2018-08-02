@@ -141,7 +141,7 @@ page_template = """
 
 <a href='{{fw_proxy_url}}'
  class='btn btn-info btn-sm navbar-btn pull-right'
- style='margin-right: 4px; margin-left: 2px;'
+ style='margin-right: 4px; margin-left: 2px;' target="_blank"
 >
 FW Dashboard</a>
 
@@ -150,10 +150,10 @@ FW Dashboard</a>
     MPContribs <span class="caret"></span>
   </button>
   <ul class="dropdown-menu pull-right">
-    <li><a href="{{flask_proxy_url}}/ingester" target=”_blank”>Ingester</a></li>
-    <li><a href="{{flask_proxy_url}}/test_site" target=”_blank”>Test Site</a></li>
+    <li><a href="{{flask_proxy_url}}/ingester" target="_blank">Ingester</a></li>
+    <li><a href="{{flask_proxy_url}}/test_site" target="_blank">Test Site</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="https://materialsproject.org/mpcontribs" target=”_blank”>Materials Project</a></li>
+    <li><a href="https://materialsproject.org/mpcontribs" target="_blank">Materials Project</a></li>
   </ul>
 </div>
 
