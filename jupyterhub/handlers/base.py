@@ -195,12 +195,12 @@ class BaseHandler(RequestHandler):
         orm_user = orm.User.find(db=self.db, name=name)
         return self._user_from_orm(orm_user)
 
-    def user_from_username(self, username):
+    def user_from_username(self, username, api_key):
         """Get User for username, creating if it doesn't exist"""
         user = self.find_user(username)
         if user is None:
             # not found, create and register user
-            u = orm.User(name=username)
+            u = orm.User(name=username, api_key=api_key)
             self.db.add(u)
             self.db.commit()
             user = self._user_from_orm(u)

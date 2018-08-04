@@ -310,6 +310,7 @@ class User(Base):
     fw_server = relationship(Server, primaryjoin=_fw_server_id == Server.id)
     admin = Column(Boolean, default=False)
     last_activity = Column(DateTime, default=datetime.utcnow)
+    api_key = Column(Unicode(256))
 
     api_tokens = relationship("APIToken", backref="user")
     cookie_id = Column(Unicode(1023), default=new_token)
